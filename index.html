@@ -3,81 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pal Café | Sabor Tradicional</title>
+    <title>El Maicero | Sabor Tradicional</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <style>
-        /* Variables de color basadas en la inspiración */
         :root {
             --color-fondo: #fcf9f2; /* Crema suave */
             --color-texto: #3e2c23; /* Café oscuro */
-            --color-acento: #c0392b; /* Rojo terracota */
-            --color-banner: #e8dccb; /* Tono cálido para el banner ilustrativo */
+            --color-acento: #c0392b; /* Rojo terracota Maicero */
+            --color-banner: #e8dccb; /* Tono cálido para el banner */
             --color-blanco: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--color-fondo);
             color: var(--color-texto);
-            line-height: 1.6;
+            scroll-behavior: smooth; /* Para que el salto sea suave */
         }
 
-        h1, h2, h3 {
+        h1, h2, h3, h5, .navbar-brand {
             font-family: 'Playfair Display', serif;
             color: var(--color-texto);
         }
 
-        /* Navegación estilo Riverside (Limpia y Sticky) */
-        nav {
+        /* Navegación Responsive (Estilo Riverside/Limpia) */
+        .navbar {
             background-color: var(--color-blanco);
-            padding: 20px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
-        .logo {
-            font-size: 28px;
+        .navbar-brand {
+            font-size: 24px;
             font-weight: 700;
-            color: var(--color-acento);
+            color: var(--color-acento) !important;
             letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--color-texto);
-            margin-left: 30px;
+        .nav-link {
             font-weight: 600;
+            color: var(--color-texto) !important;
             transition: color 0.3s ease;
         }
 
-        .nav-links a:hover {
-            color: var(--color-acento);
+        .nav-link:hover {
+            color: var(--color-acento) !important;
         }
 
-        /* BANNER ILUSTRATIVO (Inspirado en los banners compartidos) */
+        /* HERO BANNER ILUSTRATIVO (Inspirado en Dulce Café) */
         .hero-banner {
             background-color: var(--color-banner);
+            min-height: 70vh;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 60px 10%;
-            min-height: 70vh;
             position: relative;
             overflow: hidden;
+            padding: 80px 0;
         }
 
         /* Elemento decorativo de fondo */
@@ -92,13 +78,8 @@
             border-radius: 50%;
         }
 
-        .hero-text {
-            flex: 1;
-            z-index: 1;
-        }
-
         .hero-text h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             line-height: 1.1;
             margin-bottom: 20px;
         }
@@ -109,23 +90,14 @@
             border-radius: 30px;
             display: inline-block;
             font-weight: 600;
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: var(--color-acento);
             margin-bottom: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            position: relative;
-            z-index: 1;
-        }
-
+        /* Efecto de inclinación en la imagen Hero */
         .hero-image img {
-            width: 100%;
-            max-width: 500px;
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
             transform: rotate(-2deg);
@@ -136,17 +108,9 @@
             transform: rotate(0deg) scale(1.02);
         }
 
-        /* SECCIÓN DEL MENÚ (Inspirada en el menú físico Pal Café) */
+        /* SECCIÓN DEL MENÚ (Inspirada en el menú físico) */
         .menu-section {
-            padding: 80px 10%;
             background-color: var(--color-blanco);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            position: relative;
         }
 
         .section-title::after {
@@ -156,53 +120,16 @@
             margin-top: 10px;
         }
 
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-        }
-
         .menu-item {
             border-bottom: 1px dashed #d1c8b8;
-            padding-bottom: 15px;
-        }
-
-        .menu-item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 8px;
         }
 
         .menu-item-title {
-            font-size: 1.2rem;
-            font-weight: 700;
             color: var(--color-acento);
         }
 
-        .menu-item-price {
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        .menu-item-desc {
-            font-size: 0.9rem;
-            color: #666;
-        }
-
         /* GALERÍA DE PLATOS */
-        .gallery-section {
-            padding: 80px 10%;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
         .gallery-img {
-            width: 100%;
             height: 300px;
             object-fit: cover;
             border-radius: 15px;
@@ -218,124 +145,153 @@
         footer {
             background-color: var(--color-texto);
             color: var(--color-fondo);
-            text-align: center;
-            padding: 40px 20px;
         }
 
+        /* Ajustes para Móviles (Media Queries) */
         @media (max-width: 768px) {
-            .hero-banner {
-                flex-direction: column;
-                text-align: center;
-                padding: 40px 5%;
-            }
             .hero-text h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+            }
+            .hero-text {
+                text-align: center;
+                margin-bottom: 40px;
             }
             .hero-image {
-                margin-top: 40px;
-            }
-            .nav-links {
-                display: none; /* En un proyecto real aquí iría un menú hamburguesa */
+                display: flex;
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">
-            🌿 Pal Café
-        </div>
-        <div class="nav-links">
-            <a href="#inicio">Inicio</a>
-            <a href="#menu">Menú</a>
-            <a href="#galeria">Nuestros Platos</a>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid px-5">
+            <a class="navbar-brand" href="#inicio">
+                🌾 El Maicero
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#menu">Menú</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#galeria">Nuestros Platos</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
     <header class="hero-banner" id="inicio">
-        <div class="hero-text">
-            <div class="badge">El desayuno que te merecés hoy</div>
-            <h1>Amor y Tradición <br>en cada bocado</h1>
-            <p>Disfrutá de nuestras recetas auténticas. Gallopinto, tortillas palmeadas y el inconfundible sabor de hogar, servido en hojas de plátano.</p>
-        </div>
-        <div class="hero-image">
-            <img src="plato_desayuno_completo.jfif" alt="Desayuno tradicional completo">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 hero-text">
+                    <div class="badge">El desayuno que te merecés hoy</div>
+                    <h1>Amor y Tradición <br>en cada bocado</h1>
+                    <p>Disfrutá de nuestras recetas auténticas. Gallopinto, tortillas palmeadas y el inconfundible sabor de hogar, servido en hojas de plátano.</p>
+                </div>
+                <div class="col-md-6 hero-image">
+                    <img src="plato_desayuno_completo_2.jfif" alt="Desayuno tradicional El Maicero" class="img-fluid">
+                </div>
+            </div>
         </div>
     </header>
 
-    <section class="menu-section" id="menu">
-        <h2 class="section-title">Nuestro Menú</h2>
-        
-        <div class="menu-grid">
-            <div>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Gallos de Picadillo</span>
-                        <span class="menu-item-price">₡2.900</span>
+    <section class="menu-section py-5" id="menu">
+        <div class="container px-md-5">
+            <h2 class="text-center py-5 section-title">Nuestro Menú</h2>
+            
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="menu-item p-3">
+                        <div class="d-flex justify-content-between align-items-baseline">
+                            <h5 class="fw-bold menu-item-title">Gallos de Picadillo</h5>
+                            <span class="fw-bold fs-5">₡2.900</span>
+                        </div>
+                        <p class="text-muted small">Tres deliciosas tortillas palmeadas acompañadas de tu picadillo favorito de arracache o papa con carne.</p>
                     </div>
-                    <p class="menu-item-desc">Tres deliciosas tortillas palmeadas acompañadas de tu picadillo favorito de arracache o papa con carne.</p>
-                </div>
-                
-                <div class="menu-item" style="margin-top: 30px;">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Sándwich Especial de la Casa</span>
-                        <span class="menu-item-price">₡3.600</span>
+                    
+                    <div class="menu-item p-3 mt-4">
+                        <div class="d-flex justify-content-between align-items-baseline">
+                            <h5 class="fw-bold menu-item-title">Sándwich Especial</h5>
+                            <span class="fw-bold fs-5">₡3.600</span>
+                        </div>
+                        <p class="text-muted small">Pan masa madre con carne o pollo, tocineta, queso crema, arúgula y tomate. Con papas.</p>
                     </div>
-                    <p class="menu-item-desc">Pan masa madre rellenos de carne o pollo, tocineta, queso crema, arúgula y tomate. Acompañado de papas.</p>
+
+                    <div class="menu-item p-3 mt-4">
+                        <div class="d-flex justify-content-between align-items-baseline">
+                            <h5 class="fw-bold menu-item-title">La Chorreada</h5>
+                            <span class="fw-bold fs-5">₡2.750</span>
+                        </div>
+                        <p class="text-muted small">Tortilla de elote hecha al comal, servida calientita con una porción de natilla.</p>
+                    </div>
                 </div>
 
-                <div class="menu-item" style="margin-top: 30px;">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">La Chorreada</span>
-                        <span class="menu-item-price">₡2.750</span>
+                <div class="col-md-6 mb-4">
+                    <div class="menu-item p-3">
+                        <div class="d-flex justify-content-between align-items-baseline">
+                            <h5 class="fw-bold menu-item-title">Gallo Salchichón</h5>
+                            <span class="fw-bold fs-5">₡2.000</span>
+                        </div>
+                        <p class="text-muted small">Delicioso gallo de salchichón, tortilla palmeada.</p>
                     </div>
-                    <p class="menu-item-desc">Tortilla de elote hecha al comal, servida calientita con una porción de natilla.</p>
-                </div>
-            </div>
 
-            <div>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Gallo Salchichón</span>
-                        <span class="menu-item-price">₡2.000</span>
+                    <div class="menu-item p-3 mt-4">
+                        <div class="d-flex justify-content-between align-items-baseline">
+                            <h5 class="fw-bold menu-item-title">Empanadas Rellenas</h5>
+                            <span class="fw-bold fs-5">₡2.000</span>
+                        </div>
+                        <p class="text-muted small">Crujientes empanadas de carne, pollo o queso. (+ Extra arreglada ₡600)</p>
                     </div>
-                    <p class="menu-item-desc">Delicioso gallo de salchichón, tortilla palmeada.</p>
-                </div>
 
-                <div class="menu-item" style="margin-top: 30px;">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Empanadas Rellenas</span>
-                        <span class="menu-item-price">₡2.000</span>
+                    <div class="menu-item p-3 mt-4">
+                        <div class="d-flex justify-content-between align-items-baseline">
+                            <h5 class="fw-bold menu-item-title">Gallos de Lomo</h5>
+                            <span class="fw-bold fs-5">₡3.950</span>
+                        </div>
+                        <p class="text-muted small">Dos tortillas palmeadas con delicioso lomo relleno de arroz y zanahoria.</p>
                     </div>
-                    <p class="menu-item-desc">Crujientes empanadas de carne, pollo o queso. (+ Extra arreglada ₡600)</p>
-                </div>
-
-                <div class="menu-item" style="margin-top: 30px;">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Gallos de Lomo Relleno</span>
-                        <span class="menu-item-price">₡3.950</span>
-                    </div>
-                    <p class="menu-item-desc">Dos tortillas palmeadas con delicioso lomo relleno de arroz, zanahoria, chile dulce y huevo duro.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="gallery-section" id="galeria">
-        <h2 class="section-title">De la Cocina a tu Mesa</h2>
-        <div class="gallery-grid">
-            <img src="plato_carne.jfif" alt="Plato con carne en salsa" class="gallery-img">
-            <img src="plato_desayuno_completo_2.jfif" alt="Desayuno con pollo y pinto" class="gallery-img">
-            <img src="plato_desayuno_tocino.jfif" alt="Desayuno con tocino y huevo" class="gallery-img">
+    <section class="gallery-section py-5" id="galeria">
+        <div class="container">
+            <h2 class="text-center py-5 section-title">De la Cocina a tu Mesa</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <img src="plato_carne.jfif" alt="Plato con carne en salsa El Maicero" class="img-fluid gallery-img w-100">
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <img src="plato_desayuno_completo.jfif" alt="Desayuno completo con pinto" class="img-fluid gallery-img w-100">
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <img src="plato_desayuno_tocino.jfif" alt="Desayuno con tocino y huevo frito" class="img-fluid gallery-img w-100">
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <h3>Pal Café</h3>
-        <p>Visítenos y pruebe nuestra variedad de postres frescos en la vitrina.</p>
-        <p style="font-size: 0.8rem; margin-top: 20px; color: #aaa;">Los precios no incluyen 10% de impuesto de servicio.</p>
+    <footer class="text-center py-5 mt-5">
+        <div class="container">
+            <h3>🌾 El Maicero</h3>
+            <p>Visítenos y pruebe nuestra variedad de postres frescos en la vitrina.</p>
+            <p style="font-size: 0.8rem; margin-top: 20px; color: #aaa;">Precios no incluyen 10% de impuesto de servicio.</p>
+        </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
 </body>
 </html>
